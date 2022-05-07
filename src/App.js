@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 // import logo from './logo.svg';
 // import "./App.css";
-import SignInSide from "./pages/SignIn";
-import Home from "./pages/Home";
+import SignInSide from "./components/pages/SignIn";
+import Home from "./components/pages/Home";
 // import Login from "./pages/Login";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_EVENT_TItles } from "./gql/Query";
+// import { GET_ALL_EVENT_TItles } from "./gql/Query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
 	// const { loading, error, data } = useQuery(GET_ALL_EVENT_TItles);
