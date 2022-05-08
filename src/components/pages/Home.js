@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+
 import { useNavigate } from "react-router";
 import Navbar from "../Navbar";
-import LanguageModal from "../modals/LanguageModal";
+import Sidebar from "../modals/Sidebar";
 const Home = () => {
-	const { login } = useSelector((state) => state.authentication);
+	const { sidebarOpen } = useSelector((state) => state.modal);
 	const navigate = useNavigate();
+	// console.log(languageModalOpen);
 	// useEffect(() => {
 	// 	//if the user isn't logged in then redirect them to the signin page
 	// 	if (!login) {
@@ -16,7 +18,7 @@ const Home = () => {
 	return (
 		<main>
 			<Navbar />
-			{/* <LanguageModal /> */}
+			{sidebarOpen && <Sidebar />}
 		</main>
 	);
 };

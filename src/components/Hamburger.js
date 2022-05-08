@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { openSidebar } from "../features/modal/modalSlice";
 const Hamburger = () => {
 	return (
 		<HamburgerMenu className='absolute top-4 right-10 flex items-center'>

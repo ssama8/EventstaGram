@@ -7,9 +7,27 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-.btn {
+body {
+	background: ;
+}
+/* .btn {
 	border: 1px solid black;
 	padding: 0.25rem 1.5rem;
 	border-radius: 20px;
+} */
+
+#language {
+	/* background-color: red; */
+	position: absolute;
+}
+
+#language:before {
+	content: "";
+	position: absolute;
+	left: 0px;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	background: black;
+	opacity: 0.3;
 }

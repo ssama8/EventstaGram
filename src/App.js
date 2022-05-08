@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import logo from './logo.svg';
 // import "./App.css";
 import SignInSide from "./components/pages/SignIn";
+import Signup from "./components/pages/Signup";
 import Home from "./components/pages/Home";
 // import Login from "./pages/Login";
 import { useQuery } from "@apollo/client";
@@ -42,6 +43,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/signin' element={<SignInSide />} />
+					<Route path='/signup' element={<Signup />} />
 				</Routes>
 			</Router>
 			{/* <SignInSide /> */}
