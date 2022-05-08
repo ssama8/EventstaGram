@@ -16,7 +16,7 @@ const Home = () => {
 	return (
 		<main>
 			<Navbar />
-			<LanguageModal />
+			{/* <LanguageModal /> */}
 		</main>
 	);
 };
