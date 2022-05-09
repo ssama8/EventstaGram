@@ -11,13 +11,26 @@ let thirdQuestionChoices = [...secondQuestionChoices].slice(
 );
 const initialState = {
 	securityQuestions: {
-		question1: securityQuestions,
-		question2: secondQuestionChoices,
-		question3: thirdQuestionChoices,
+		question1: {
+			choices: securityQuestions,
+			answer: "",
+			value: securityQuestions[0],
+		},
+		question2: {
+			choices: secondQuestionChoices,
+			answer: "",
+			value: securityQuestions[1],
+		},
+		question3: {
+			choices: thirdQuestionChoices,
+			answer: "",
+			value: securityQuestions[2],
+		},
 	},
 	username: "",
 	password: "",
 	message: "",
+	securityMessage: "",
 };
 
 const createUserSlice = createSlice({
@@ -45,7 +58,6 @@ const createUserSlice = createSlice({
 				// matches
 			}
 			if (!username.match(/\d/)) {
-				console.log(1);
 				state.message = "Username must have atleast one number";
 				return;
 			}
