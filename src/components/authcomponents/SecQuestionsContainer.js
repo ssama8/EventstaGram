@@ -1,7 +1,10 @@
 import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { updateDropdown } from "../../features/createUser/createUserSlice";
+import { useDispatch } from "react-redux";
 const SecQuestionsContainer = () => {
+	const dispatch = useDispatch();
 	const firstDropdowm = useRef(null);
 	const [firstAnswer, setFirstAnswer] = useState("");
 	const {
@@ -11,7 +14,13 @@ const SecQuestionsContainer = () => {
 	} = useSelector((state) => state.createUser);
 	console.log(question1.choices);
 	const handleFirstDropdown = (e) => {
-		console.log(e.target.value);
+		dispatch(updateDropdown({ question: e.target.value, number: 1 }));
+	};
+	const handleSecondDropdown = (e) => {
+		dispatch(updateDropdown({ question: e.target.value, number: 2 }));
+	};
+	const handleThirdDropdown = (e) => {
+		dispatch(updateDropdown({ question: e.target.value, number: 3 }));
 	};
 	const handleFirstBlur = (e) => {
 		console.log("blur");
@@ -49,6 +58,8 @@ const SecQuestionsContainer = () => {
 				name=''
 				id=''
 				value={question2.value}
+				onChange={handleSecondDropdown}
+
 				// className='border-black border-2'
 			>
 				{question2.choices.map((question, idx) => {
@@ -70,6 +81,7 @@ const SecQuestionsContainer = () => {
 				name=''
 				id=''
 				value={question3.value}
+				onChange={handleThirdDropdown}
 
 				// className='border-black border-2'
 			>

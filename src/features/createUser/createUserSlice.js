@@ -41,6 +41,19 @@ const createUserSlice = createSlice({
 			console.log(action);
 			return state;
 		},
+		updateDropdown: (state, action) => {
+			console.log("running");
+			const { question, number } = action.payload;
+			const questionObj = state.securityQuestions;
+			if (number === 1) {
+				questionObj.question1.value = question;
+			} else if (number === 2) {
+				questionObj.question2.value = question;
+			} else {
+				questionObj.question3.value = question;
+			}
+			// console.log(state.q);
+		},
 		checkInformationValid: (state, action) => {
 			const { username, password, confirmPassword } = action.payload;
 			if ((!username, !password, !confirmPassword)) {
@@ -90,4 +103,5 @@ const createUserSlice = createSlice({
 
 export default createUserSlice.reducer;
 
-export const { updateChoices, checkInformationValid } = createUserSlice.actions;
+export const { updateChoices, checkInformationValid, updateDropdown } =
+	createUserSlice.actions;
