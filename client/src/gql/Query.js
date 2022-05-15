@@ -13,21 +13,13 @@ export const GET_ALL_EVENT_TItles = gql`
 	}
 `;
 
-export const Login_TO_ACCOUNT = gql`
-	mutation {
-		login(username: "user1", password: "yo") {
-			status
-			message
-		}
-	}
-`;
+
 
 export const GET_ALL_USERS = gql`
 	query {
 		users {
 			username
 			_id
-			password
 			createdEvents {
 				_id
 				title
@@ -39,3 +31,4 @@ export const GET_ALL_USERS = gql`
 		}
 	}
 `;
+

@@ -8,16 +8,7 @@ const LanguageModal = () => {
 			<section className='language-modal text-center '>
 				<h2 className='text-3xl font-bold'>Choose Language</h2>
 				<div className='grid grid-cols-3'>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
-					<p>Test</p>
+					
 				</div>
 			</section>
 		</Container>

@@ -35,6 +35,7 @@ function App() {
 	// useEffect(() => {
 	// 	fetchData();
 	// }, []);
+	const [test, setTest] = useState();
 
 	return (
 		<>
@@ -42,6 +43,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path='/' element={<Home />} />
+
 					<Route path='/signin' element={<SignInSide />} />
 					<Route path='/signup' element={<Signup />} />
 				</Routes>
