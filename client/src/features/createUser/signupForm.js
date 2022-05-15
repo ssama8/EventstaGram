@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	formTabs: ["Account Setup", "Personal Details", "Confirm Information"],
+	formTabs: ["Account Setup", "Personal Details", "Confirm Info"],
 	activeTab: 0,
 };
 

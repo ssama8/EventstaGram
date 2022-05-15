@@ -1,28 +1,35 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 const FormRibbon = () => {
+	const { activeTab, formTabs } = useSelector(
+		(state) => state.createSignupForm
+	);
+	const setProgressBar = () => {
+		if (activeTab === 0) {
+			return "empty";
+		}
+		if (activeTab === 1) {
+			return "half";
+		}
+		return "full";
+	};
+
 	return (
 		<Wrapper className='relative flex justify-between text-center'>
-			<div className='flex flex-col items-center'>
-				<div className='box'>
-					<span> 1</span>
-				</div>
-				<p>Account Setup</p>
-			</div>
-			<div className='flex flex-col items-center'>
-				<div className='box'>
-					<span> 2</span>
-				</div>
-				<p>Social Profiles</p>
-			</div>
-			<div className='flex flex-col items-center'>
-				<div className='box'>
-					<span>3</span>
-				</div>
-				<p>Personal Details</p>
-			</div>
+			{formTabs.map((tab, index) => {
+				return (
+					<div key={index} className='flex flex-col items-center'>
+						<div className='box'>
+							<span>{index + 1}</span>
+						</div>
+						<p>{tab}</p>
+					</div>
+				);
+			})}
 
 			<div className='line absolute'></div>
+			<div className={`progress-line absolute ${setProgressBar()}`}></div>
 		</Wrapper>
 	);
 };
@@ -38,12 +45,25 @@ const Wrapper = styled.section`
 		height: 30px;
 		// background: blue;
 	}
-	.line {
+	.line,
+	.progress-line {
 		background: blue;
-		height: 2px;
+		height: 4px;
 		left: 10%;
 		width: 80%;
 		top: 15px;
 		z-index: -1;
+	}
+	.progress-line {
+		background: green;
+	}
+	.empty {
+		width: 0%;
+	}
+	.half {
+		width: 40%;
+	}
+	.full {
+		width: 80%;
 	}
 `;

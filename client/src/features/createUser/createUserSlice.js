@@ -1,28 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { securityQuestions } from "../../utils/securityQuestions";
 
-let secondQuestionChoices = [...securityQuestions].slice(
-	1,
-	securityQuestions.length
-);
-let thirdQuestionChoices = [...secondQuestionChoices].slice(
-	1,
-	secondQuestionChoices.length
-);
 const initialState = {
 	securityQuestions: {
 		question1: {
-			choices: securityQuestions,
 			answer: "",
 			value: securityQuestions[0],
 		},
 		question2: {
-			choices: secondQuestionChoices,
 			answer: "",
 			value: securityQuestions[1],
 		},
 		question3: {
-			choices: thirdQuestionChoices,
 			answer: "",
 			value: securityQuestions[2],
 		},
@@ -52,6 +41,11 @@ const createUserSlice = createSlice({
 			} else {
 				questionObj.question3.value = question;
 			}
+		},
+		resetInformation: (state, action) => {
+			state.username = "";
+			state.password = "";
+			state.message = "";
 		},
 		checkInformationValid: (state, action) => {
 			const { username, password, confirmPassword } = action.payload;
@@ -101,5 +95,9 @@ const createUserSlice = createSlice({
 
 export default createUserSlice.reducer;
 
-export const { updateChoices, checkInformationValid, updateDropdown } =
-	createUserSlice.actions;
+export const {
+	updateChoices,
+	checkInformationValid,
+	updateDropdown,
+	resetInformation,
+} = createUserSlice.actions;

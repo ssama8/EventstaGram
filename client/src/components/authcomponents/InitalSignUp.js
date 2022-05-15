@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkInformationValid } from "../../features/createUser/createUserSlice";
+import {
+	checkInformationValid,
+	resetInformation,
+} from "../../features/createUser/createUserSlice";
 import { goToNextTab } from "../../features/createUser/signupForm";
 const InitalSignUp = () => {
 	const { message } = useSelector((state) => state.createUser);
 	const [username, setUsername] = useState("");
+	const user = useSelector((state) => state.createUser);
 
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,6 +25,12 @@ const InitalSignUp = () => {
 
 	const nextTab = () => {
 		dispatch(goToNextTab());
+	};
+	const resetInfo = () => {
+		dispatch(resetInformation());
+		setUsername("");
+		setPassword("");
+		setConfirmPassword("");
 	};
 	return (
 		<div className='px-6'>
@@ -72,21 +82,31 @@ const InitalSignUp = () => {
 					placeholder='Confirm Password'
 				/>
 			</div>
-			<div className='flex items-center justify-center'>
-				<button
-					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-					type='button'
-					onClick={handleClick}>
-					Sign Up
-				</button>
-			</div>
-			<div className='text-center mt-4'>
-				<button
-					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-					onClick={nextTab}>
-					{" "}
-					Go to next page
-				</button>
+			<div className='flex items-center justify-around'>
+				{!user.username && !user.password && (
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						type='button'
+						onClick={handleClick}>
+						Validate Info
+					</button>
+				)}
+				{user.username && user.password && (
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						onClick={resetInfo}>
+						{" "}
+						Change Info
+					</button>
+				)}
+				{user.username && user.password && (
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						onClick={nextTab}>
+						{" "}
+						Go to next page
+					</button>
+				)}
 			</div>
 		</div>
 	);

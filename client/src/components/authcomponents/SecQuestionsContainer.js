@@ -3,16 +3,13 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { updateDropdown } from "../../features/createUser/createUserSlice";
 import { useDispatch } from "react-redux";
+import { securityQuestions } from "../../utils/securityQuestions";
 const SecQuestionsContainer = () => {
 	const dispatch = useDispatch();
 	const firstDropdowm = useRef(null);
-	const [firstAnswer, setFirstAnswer] = useState("");
 	const {
 		securityQuestions: { question1, question2, question3 },
-		username,
-		password,
 	} = useSelector((state) => state.createUser);
-	console.log(question1.choices);
 	const handleFirstDropdown = (e) => {
 		dispatch(updateDropdown({ question: e.target.value, number: 1 }));
 	};
@@ -35,9 +32,8 @@ const SecQuestionsContainer = () => {
 				name=''
 				id=''
 				onChange={handleFirstDropdown}
-				// className='border-black border-2'
 				value={question1.value}>
-				{question1.choices.map((question, idx) => {
+				{securityQuestions.map((question, idx) => {
 					return (
 						<option value={question} key={idx}>
 							{question}
@@ -50,7 +46,6 @@ const SecQuestionsContainer = () => {
 				name='first-sec-question'
 				id='first-sec-question'
 				className='border-2 '
-				// value={firstAnswer}
 				onBlur={handleFirstBlur}
 			/>
 
@@ -58,11 +53,8 @@ const SecQuestionsContainer = () => {
 				name=''
 				id=''
 				value={question2.value}
-				onChange={handleSecondDropdown}
-
-				// className='border-black border-2'
-			>
-				{question2.choices.map((question, idx) => {
+				onChange={handleSecondDropdown}>
+				{securityQuestions.map((question, idx) => {
 					return (
 						<option value={question} key={idx}>
 							{question}
@@ -82,7 +74,7 @@ const SecQuestionsContainer = () => {
 				id=''
 				value={question3.value}
 				onChange={handleThirdDropdown}>
-				{question3.choices.map((question, idx) => {
+				{securityQuestions.map((question, idx) => {
 					return (
 						<option value={question} key={idx}>
 							{question}
