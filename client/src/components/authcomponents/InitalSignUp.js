@@ -18,11 +18,12 @@ const InitalSignUp = () => {
 		);
 	};
 	return (
-		<>
+		<div className='px-6'>
+			<h2 className='text-2xl my-4'>Create Your Login Credentials</h2>
 			<p className='error'>{message}</p>
 			<div className='mb-4'>
 				<label
-					className='block text-gray-700 text-sm font-bold mb-2'
+					className='block text-gray-700 text-l font-bold mb-2'
 					htmlFor='username'>
 					Username
 				</label>
@@ -38,7 +39,7 @@ const InitalSignUp = () => {
 
 			<div className='mb-6'>
 				<label
-					className='block text-gray-700 text-sm font-bold mb-2'
+					className='block text-gray-700 text-l font-bold mb-2'
 					htmlFor='password'>
 					Password
 				</label>
@@ -53,7 +54,7 @@ const InitalSignUp = () => {
 			</div>
 			<div className='mb-6'>
 				<label
-					className='block text-gray-700 text-sm font-bold mb-2'
+					className='block text-gray-700 text-l font-bold mb-2'
 					htmlFor='password'>
 					Confirm Password
 				</label>
@@ -74,7 +75,13 @@ const InitalSignUp = () => {
 					Sign Up
 				</button>
 			</div>
-		</>
+			<div className='text-center mt-4'>
+				<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+					{" "}
+					Go to next page
+				</button>
+			</div>
+		</div>
 	);
 };
 

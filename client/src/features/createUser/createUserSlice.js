@@ -31,6 +31,10 @@ const initialState = {
 	password: "",
 	message: "",
 	securityMessage: "",
+	formState: {
+		states: ["Account Setup", "Social Profiles", "Personal Details"],
+		active: 0,
+	},
 };
 
 const createUserSlice = createSlice({
@@ -52,7 +56,6 @@ const createUserSlice = createSlice({
 			} else {
 				questionObj.question3.value = question;
 			}
-			// console.log(state.q);
 		},
 		checkInformationValid: (state, action) => {
 			const { username, password, confirmPassword } = action.payload;
@@ -96,7 +99,6 @@ const createUserSlice = createSlice({
 			state.password = password;
 
 			state.message = "Success";
-			// console.log(username, password, confirmPassword);
 		},
 	},
 });

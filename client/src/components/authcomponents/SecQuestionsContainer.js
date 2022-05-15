@@ -81,10 +81,7 @@ const SecQuestionsContainer = () => {
 				name=''
 				id=''
 				value={question3.value}
-				onChange={handleThirdDropdown}
-
-				// className='border-black border-2'
-			>
+				onChange={handleThirdDropdown}>
 				{question3.choices.map((question, idx) => {
 					return (
 						<option value={question} key={idx}>
@@ -99,7 +96,6 @@ const SecQuestionsContainer = () => {
 				id='third-sec-question'
 				className='border-2'
 			/>
-			<button className='btn'>Review Your Information</button>
 		</Container>
 	);
 };
