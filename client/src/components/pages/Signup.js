@@ -7,11 +7,12 @@ import styled from "styled-components";
 import SecQuestionsContainer from "../authcomponents/SecQuestionsContainer";
 import FormRibbon from "../authcomponents/FormRibbon";
 import PersonalDetails from "../authcomponents/PersonalDetails";
+import InitalSignUp from "../authcomponents/InitalSignUp";
+import EditInformation from "../authcomponents/EditInformation";
+const formTabs = [<InitalSignUp />, <PersonalDetails />, <EditInformation />];
 const Signup = () => {
 	const { username, password } = useSelector((state) => state.createUser);
-	const { formComponents, activeTab } = useSelector(
-		(state) => state.createSignupForm
-	);
+	const { activeTab } = useSelector((state) => state.createSignupForm);
 	return (
 		<Wrapper className='items-center flex justify-center'>
 			<section>
@@ -19,7 +20,7 @@ const Signup = () => {
 				<form className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
 					{/* {!username && !password && <InitialSignUp />}
 				{username && password && <FunFact />} */}
-					{formComponents[activeTab]}
+					{formTabs[activeTab]}
 					{/* <FunFact /> */}
 				</form>
 				{/* <p className='text-center text-gray-500 text-xs'>

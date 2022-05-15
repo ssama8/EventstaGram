@@ -31,10 +31,6 @@ const initialState = {
 	password: "",
 	message: "",
 	securityMessage: "",
-	formState: {
-		states: ["Account Setup", "Social Profiles", "Personal Details"],
-		active: 0,
-	},
 };
 
 const createUserSlice = createSlice({

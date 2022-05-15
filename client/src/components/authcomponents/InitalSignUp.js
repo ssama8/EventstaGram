@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkInformationValid } from "../../features/createUser/createUserSlice";
+import { goToNextTab } from "../../features/createUser/signupForm";
 const InitalSignUp = () => {
 	const { message } = useSelector((state) => state.createUser);
 	const [username, setUsername] = useState("");
@@ -16,6 +17,10 @@ const InitalSignUp = () => {
 				confirmPassword,
 			})
 		);
+	};
+
+	const nextTab = () => {
+		dispatch(goToNextTab());
 	};
 	return (
 		<div className='px-6'>
@@ -76,7 +81,9 @@ const InitalSignUp = () => {
 				</button>
 			</div>
 			<div className='text-center mt-4'>
-				<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+				<button
+					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+					onClick={nextTab}>
 					{" "}
 					Go to next page
 				</button>
