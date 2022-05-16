@@ -1,7 +1,10 @@
 import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { updateDropdown } from "../../features/createUser/createUserSlice";
+import {
+	updateDropdown,
+	updateSecAnswers,
+} from "../../features/createUser/createUserSlice";
 import { useDispatch } from "react-redux";
 import { securityQuestions } from "../../utils/securityQuestions";
 const SecQuestionsContainer = () => {
@@ -20,10 +23,18 @@ const SecQuestionsContainer = () => {
 	const handleThirdDropdown = (e) => {
 		dispatch(updateDropdown({ question: e.target.value, number: 3 }));
 	};
-	const handleFirstBlur = (e) => {
-		console.log("blur");
-		console.log(firstDropdowm.current);
+
+	const handleFirstChange = (e) => {
+		dispatch(updateSecAnswers({ value: e.target.value, number: 1 }));
 	};
+
+	const handleSecondChange = (e) => {
+		dispatch(updateSecAnswers({ value: e.target.value, number: 2 }));
+	};
+	const handleThirdChange = (e) => {
+		dispatch(updateSecAnswers({ value: e.target.value, number: 3 }));
+	};
+
 	return (
 		<Container>
 			<h3 className='mb-6 text-xl'>
@@ -49,7 +60,8 @@ const SecQuestionsContainer = () => {
 				name='first-sec-question'
 				id='first-sec-question'
 				className='border-2 '
-				onBlur={handleFirstBlur}
+				value={question1.answer}
+				onChange={handleFirstChange}
 			/>
 
 			<select
@@ -70,6 +82,8 @@ const SecQuestionsContainer = () => {
 				name='second-sec-question'
 				id='second-sec-question'
 				className='border-2 '
+				value={question2.answer}
+				onChange={handleSecondChange}
 			/>
 
 			<select
@@ -90,6 +104,8 @@ const SecQuestionsContainer = () => {
 				name='third-sec-question'
 				id='third-sec-question'
 				className='border-2'
+				value={question3.answer}
+				onChange={handleThirdChange}
 			/>
 		</Container>
 	);

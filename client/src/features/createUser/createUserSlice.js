@@ -43,6 +43,17 @@ const createUserSlice = createSlice({
 				questionObj.question3.value = question;
 			}
 		},
+		updateSecAnswers: (state, action) => {
+			const { value, number } = action.payload;
+			const questionObj = state.securityQuestions;
+			if (number === 1) {
+				questionObj.question1.answer = value;
+			} else if (number === 2) {
+				questionObj.question2.answer = value;
+			} else {
+				questionObj.question3.answer = value;
+			}
+		},
 		resetInformation: (state, action) => {
 			state.username = "";
 			state.password = "";
@@ -108,17 +119,23 @@ const createUserSlice = createSlice({
 				console.log("Please pick 3 different security questions to answer");
 				state.securityMessage =
 					"Please pick 3 different security questions to answer";
+				return;
 			}
 			if (
 				question1.answer.length < 3 ||
 				question2.answer.length < 3 ||
 				question3.answer.length < 3
 			) {
-				console.log("running");
 				state.securityMessage =
 					"Please provide valid answers that are longer than 2 characters";
+				return;
 			}
-			return state;
+			const funFactWords = state.funFact.split(" ");
+			if (funFactWords.length < 3) {
+				state.securityMessage = "Fun Fact must be atleast 3 words long";
+				return;
+			}
+			state.securityMessage = "Successfully filled out details";
 		},
 	},
 });
@@ -132,4 +149,5 @@ export const {
 	resetInformation,
 	checkSecValid,
 	setFunFact,
+	updateSecAnswers,
 } = createUserSlice.actions;
