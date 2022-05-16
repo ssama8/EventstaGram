@@ -21,6 +21,8 @@ const initialState = {
 	password: "f",
 	funFact: "",
 	message: "",
+	submittedPersonalDetails: false,
+
 	securityMessage: "",
 };
 
@@ -64,11 +66,15 @@ const createUserSlice = createSlice({
 			validateCredentials(state, action);
 		},
 		setFunFact: (state, action) => {
-			console.log(action.payload);
 			state.funFact = action.payload;
 		},
 		checkSecValid: (state) => {
-			validateDetails(state);
+			const submission = validateDetails(state);
+			console.log(submission);
+			if (submission === "success") {
+				console.log("running");
+				state.submittedPersonalDetails = true;
+			}
 		},
 	},
 });

@@ -26,6 +26,7 @@ const validateDetails = (state) => {
 		return;
 	}
 	state.securityMessage = "Successfully filled out details";
+	return "success";
 };
 
 export default validateDetails;

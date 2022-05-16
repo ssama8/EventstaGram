@@ -10,9 +10,7 @@ import SecQuestionsContainer from "./SecQuestionsContainer";
 import FunFact from "./FunFact";
 const PersonalDetails = () => {
 	const dispatch = useDispatch();
-	const { submittedPersonalDetails } = useSelector(
-		(state) => state.createSignupForm
-	);
+	const { submittedPersonalDetails } = useSelector((state) => state.createUser);
 	const nextTab = () => {
 		// useDispatch(goToNextTab());
 		console.log("running");
