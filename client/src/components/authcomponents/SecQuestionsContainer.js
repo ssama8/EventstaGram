@@ -9,6 +9,7 @@ const SecQuestionsContainer = () => {
 	const firstDropdowm = useRef(null);
 	const {
 		securityQuestions: { question1, question2, question3 },
+		securityMessage,
 	} = useSelector((state) => state.createUser);
 	const handleFirstDropdown = (e) => {
 		dispatch(updateDropdown({ question: e.target.value, number: 1 }));
@@ -28,6 +29,8 @@ const SecQuestionsContainer = () => {
 			<h3 className='mb-6 text-xl'>
 				Pick 3 different Security Question to Answer
 			</h3>
+			<p className='mb-2 '>{securityMessage}</p>
+
 			<select
 				name=''
 				id=''

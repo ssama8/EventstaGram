@@ -16,8 +16,9 @@ const initialState = {
 			value: securityQuestions[2],
 		},
 	},
-	username: "",
-	password: "",
+	username: "f",
+	password: "f",
+	funFact: "",
 	message: "",
 	securityMessage: "",
 };
@@ -45,7 +46,7 @@ const createUserSlice = createSlice({
 		resetInformation: (state, action) => {
 			state.username = "";
 			state.password = "";
-			state.message = "";
+			state.securityMessage = "";
 		},
 		checkInformationValid: (state, action) => {
 			const { username, password, confirmPassword } = action.payload;
@@ -90,6 +91,35 @@ const createUserSlice = createSlice({
 
 			state.message = "Success";
 		},
+		setFunFact: (state, action) => {
+			console.log(action.payload);
+			state.funFact = action.payload;
+		},
+		checkSecValid: (state, action) => {
+			const {
+				securityQuestions: { question1, question2, question3 },
+			} = state;
+			console.log(question1.value, question2.value, question3.value);
+			if (
+				question1.value === question2.value ||
+				question1.value === question3.value ||
+				question2.value === question3.value
+			) {
+				console.log("Please pick 3 different security questions to answer");
+				state.securityMessage =
+					"Please pick 3 different security questions to answer";
+			}
+			if (
+				question1.answer.length < 3 ||
+				question2.answer.length < 3 ||
+				question3.answer.length < 3
+			) {
+				console.log("running");
+				state.securityMessage =
+					"Please provide valid answers that are longer than 2 characters";
+			}
+			return state;
+		},
 	},
 });
 
@@ -100,4 +130,6 @@ export const {
 	checkInformationValid,
 	updateDropdown,
 	resetInformation,
+	checkSecValid,
+	setFunFact,
 } = createUserSlice.actions;

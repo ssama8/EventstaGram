@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	formTabs: ["Account Setup", "Personal Details", "Confirm Info"],
+	submittedPersonalDetals: false,
 	activeTab: 0,
+	secQuestionMessage: "",
 };
 
 const createSignupFormSlice = createSlice({
@@ -15,6 +17,7 @@ const createSignupFormSlice = createSlice({
 		goToPreviousTab: (state, action) => {
 			state.activeTab--;
 		},
+		checkSecValid: (state, action) => {},
 	},
 });
 
